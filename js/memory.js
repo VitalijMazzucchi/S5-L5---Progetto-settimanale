@@ -3,33 +3,34 @@ let arrayAnimali = ['🐱', '🦉', '🐾', '🦁', '🦋', '🐛', '🐝', '�
 //libreria per icone
 //https://html-css-js.com/html/character-codes/
 let arrayComparison = [];
+let min=0;
+let sec=0; 
 
 document.body.onload = startGame();
 
 //Fuonzione che crea , mischia le carte e le rende cliccabili
 function startGame(){
 //azzera il tempo al caricamento della pagina 
-min=0
-sec=0
+min=0;
+sec=0;
 //selezione il nodo e lo azzero al caricamento della pagina
-let contenitorte = document.querySelector('.icon-grid') 
-contenitorte.innerHTML=''
+let contenitorte = document.querySelector('.icon-grid') ;
+contenitorte.innerHTML='';
 //mischia l array e per ogni e;emento contenuto crea le carte e le inserisce sullol schermo
 let arrayShuffle = shuffle(arrayAnimali);
 arrayShuffle.forEach((ele) =>{
-let carte = document.createElement('div')
-let simbolo = document.createElement('div')
-contenitorte.appendChild(carte)
-carte.appendChild(simbolo)
-simbolo.className= 'icon' 
-simbolo.innerText= ele 
+let carte = document.createElement('div');
+let simbolo = document.createElement('div');
+contenitorte.appendChild(carte);
+carte.appendChild(simbolo);
+simbolo.className= 'icon' ;
+simbolo.innerText= ele ;
 simbolo.addEventListener('click', displayIcon)
 })
 }
 
 //questa e la funzione che tiene il tempo 
-let min=0;
-let sec=0;  
+ 
 function tempo(){ 
 sec++;
  if(sec==60){
@@ -81,9 +82,10 @@ function shuffle(a) {
 
 var iconsFind;
 function displayIcon() {
+
     var icon = document.getElementsByClassName("icon");
     var icons = [...icon];
-    iconsFind=document.getElementsBygClassName('find');
+    iconsFind=document.getElementsByClassName('find');
 
 
     /*
@@ -141,19 +143,19 @@ endGame()
 let endgame = document.querySelector('#modal')
 function endGame (){
     if(iconsFind.length == 24){
-       modal.className = 'active'
-       let soud = new Audio('../media/1.mp3')
-       soud.play()
+       modal.className = 'active';
+       let soud = new Audio('../media/1.mp3');
+       soud.play();
     }
 clearInterval(tempo())
-let time= document.querySelector('#tempoTrascorso')
-time.innerText= min + 'min' + sec + 'sec'
+let time= document.querySelector('#tempoTrascorso');
+time.innerText= min + 'min' + sec + 'sec';
 }
 
 // una funzione che nasconde la modale alla fine e riavvia il gioco
 function rigioca(){
-startGame()
-modal.className= ''
+startGame();
+modal.className= '';
 }
 
 
